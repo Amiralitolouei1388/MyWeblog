@@ -1,0 +1,32 @@
+{% extends "accounts/base_user.html" %}
+
+{% block title %}About&nbsp;&ndash;&nbsp;{{ user.get_full_name }}&ndash;&nbsp;{% endblock title %}
+
+{% block user_profile_detail %}
+<div class="card mb-4">
+  <div class="card-body">
+    {% if user.about %}
+      <div>
+        <p class="card-text">{{ user.about }}</p>
+      </div>
+    {% else %}
+      <div class="py-4">
+        <p class="text-muted">MyBlog member since {{ user.date_joined|date:"M Y" }}</p>
+      </div>
+    {% endif %}
+    <div class="my-2">
+      <a
+        href="{% url 'users:followers' user.username %}"
+        class="text-decoration-none"
+        >{{ followers_count }} Followers
+      </a>
+      &nbsp;&nbsp;&middot;&nbsp;&nbsp;
+      <a
+        href="{% url 'users:following' user.username %}"
+        class="text-decoration-none"
+        >{{ following_count }} Following
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock user_profile_detail %}
