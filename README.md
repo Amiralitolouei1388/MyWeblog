@@ -1,2 +1,2 @@
 This is Weblog created by django from python...
-and my name is AmiraliTolouei.
+and my name is AmiraliTolouei.# MyWeblog
