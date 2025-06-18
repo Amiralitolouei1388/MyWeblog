@@ -1,6 +1,7 @@
 import environ
 import dj_database_url
 from pathlib import Path
+import os
 
 env = environ.Env()
 
@@ -16,10 +17,11 @@ environ.Env.read_env(BASE_DIR / ".env")
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=False)
+# DEBUG = env.bool("DEBUG", default=False)
+DEBUG = os.environ.get("DEBUG", False) == 'True'
 print(DEBUG)
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost", "django-blog-pgu8.onrender.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
